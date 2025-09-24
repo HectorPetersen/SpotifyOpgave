@@ -4,5 +4,6 @@
         ROCK,
         POP,
         JAZZ,
-        COUNTRY
-    }
+        COUNTRY;
+
+}

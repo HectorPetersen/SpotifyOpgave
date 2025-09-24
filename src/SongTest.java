@@ -18,7 +18,7 @@ public class SongTest {
             switch (choice) {
                 case "1" -> addSong();
                 case "2" -> removeSong();
-                case "3" -> showAll();
+                case "3" -> showSongs();
                 case "4" -> searchSong();
                 case "5" -> editSong();
                 case "6" -> running = false;
@@ -61,6 +61,8 @@ public class SongTest {
         System.out.print("Hvilken genre har din sang? (Rock/Pop/Jazz/Country): ");
         String genre = scanner.nextLine();
 
+
+
         songs.add(new Song(title, Genre.valueOf(genre.toUpperCase())));
         System.out.println("Sangen '" + title + "' er blevet tilføjet.");
     }
@@ -90,5 +92,14 @@ public class SongTest {
             }
         }
         return null;
+    }
+    private static void showSongs() {
+        if (songs.isEmpty()) {
+            System.out.println("ingen sange i listen.");
+        } else {
+            for (Song song : songs) {
+                System.out.println(song);
+            }
+        }
     }
 }
