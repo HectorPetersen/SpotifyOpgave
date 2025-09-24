@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class SongTest {
 
-    ArrayList<Song> songs = new ArrayList<>();
+    protected static ArrayList<Song> songs = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -53,5 +53,14 @@ public class SongTest {
             System.out.println("(Premium: download er tilgængelig i fremtidig version)");
         }
         System.out.print("Dit valg: ");
+    }
+
+    private static void addSong(){
+        System.out.print("Hvilken sang vil du gerne tilføje?: ");
+        String title = scanner.nextLine();
+        System.out.print("Hvilken genre har din sang? (Rock/Pop/Jazz/Country): ");
+        String genre = scanner.nextLine();
+
+        songs.add(new Song(title, Genre.valueOf(genre.toUpperCase())));
     }
 }
