@@ -1,6 +1,6 @@
 public class User {
-    private boolean isPremium;
-    private String userName;
+    protected boolean isPremium;
+    protected String userName;
 
     User(String userName, boolean isPremium){
         this.userName = userName;
