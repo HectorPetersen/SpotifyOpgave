@@ -50,7 +50,7 @@ public class SongTest {
         System.out.println("5. Rediger en sang");
         System.out.println("6. Afslut programmet");
         if (user.isPremium()) {
-            System.out.println("(Premium: download er tilgængelig i fremtidig version)");
+            System.out.println("7. Download sange (Premium funktion)");
         }
         System.out.print("Dit valg: ");
     }
@@ -63,4 +63,11 @@ public class SongTest {
 
         songs.add(new Song(title, Genre.valueOf(genre.toUpperCase())));
     }
+
+    private static void showAd() {
+        System.out.println("---- REKLAME ----");
+        System.out.println("Opgrader til Premium for reklamefri musik og download!");
+        System.out.println("-----------------");
+    }
+
 }
