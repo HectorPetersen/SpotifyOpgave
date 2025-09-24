@@ -55,13 +55,26 @@ public class SongTest {
         System.out.print("Dit valg: ");
     }
 
-    private static void addSong(){
+    private static void addSong() {
         System.out.print("Hvilken sang vil du gerne tilføje?: ");
         String title = scanner.nextLine();
         System.out.print("Hvilken genre har din sang? (Rock/Pop/Jazz/Country): ");
         String genre = scanner.nextLine();
 
         songs.add(new Song(title, Genre.valueOf(genre.toUpperCase())));
+        System.out.println("Sangen '" + title + "' er blevet tilføjet.");
+    }
+
+    private static void removeSong() {
+        System.out.print("Hvilken sang vil du gerne fjerne?: ");
+        String title = scanner.nextLine();
+        Song song = findByTitle(title);
+        if (song != null) {
+            songs.remove(song);
+            System.out.println("Sangen '" + title + "' er blevet fjernet.");
+        } else {
+            System.out.println("Sangen '" + title + "' blev ikke fundet.");
+        }
     }
 
     private static void showAd() {
@@ -70,4 +83,12 @@ public class SongTest {
         System.out.println("-----------------");
     }
 
+    private static Song findByTitle(String title) {
+        for (Song song : songs) {
+            if (song.getTitle().equalsIgnoreCase(title)) {
+                return song;
+            }
+        }
+        return null;
+    }
 }
