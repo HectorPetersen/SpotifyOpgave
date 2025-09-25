@@ -71,6 +71,7 @@ public class SongTest {
             }
         }
 
+
     }
 
     private static void removeSong() {
@@ -92,7 +93,25 @@ public class SongTest {
     }
 
     private static void editSong() {
-
+        System.out.println("Hvilken sang ønsker du at ændre? (Titel)");
+        String title = scanner.nextLine();
+        Song song = findByTitle(title);
+        if (song != null) {
+            System.out.println("Sangen '" + title + "' blev fundet.");
+        } else {
+            System.out.println("Sangen '" + title + "' blev ikke fundet.");
+        }
+        System.out.println("Vil du ændre titlen eller genren?");
+        String choice = scanner.nextLine();
+        if (choice.trim().toLowerCase().startsWith("t")) {
+            System.out.println("Hvad vil du ændre titlen til?");
+            String newTitle = scanner.nextLine();
+            song.setTitle(newTitle);
+        } else if (choice.trim().toLowerCase().startsWith("g")) {
+            System.out.println("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country)");
+            String newGenre = scanner.nextLine();
+            song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
+        }
     }
 
     private static void showAd() {
