@@ -7,7 +7,7 @@ public class SongTest {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Velkommen til dit hjemmelavede Spotify!");
+        System.out.println("Velkommen til det hjemmelavede Spotify!");
         User user = loginFlow();
 
         boolean running = true;
@@ -77,6 +77,16 @@ public class SongTest {
         } else {
             System.out.println("Sangen '" + title + "' blev ikke fundet.");
         }
+    }
+
+    private static void searchSong() {
+        System.out.println("Hvilken sang vil du søge efter?");
+        String choice = scanner.nextLine();
+        System.out.println(findByTitle(choice));
+    }
+
+    private static void editSong() {
+
     }
 
     private static void showAd() {
