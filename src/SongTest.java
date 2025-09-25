@@ -58,15 +58,18 @@ public class SongTest {
     private static void addSong() {
         System.out.print("Hvilken sang vil du gerne tilføje?: ");
         String title = scanner.nextLine();
-       try {
-           System.out.print("Hvilken genre har din sang? (Rock/Pop/Jazz/Country): ");
-           String genre = scanner.nextLine();
-           songs.add(new Song(title, Genre.valueOf(genre.toUpperCase())));
-           System.out.println("Sangen '" + title + "' er blevet tilføjet.");
-       } catch (IllegalArgumentException e) {
-           System.out.println("Denne genre findes ikke");
+        boolean valid = false;
+        while(!valid) {
+            try {
+                System.out.print("Hvilken genre har din sang? (Rock/Pop/Jazz/Country): ");
+                String genre = scanner.nextLine();
+                songs.add(new Song(title, Genre.valueOf(genre.toUpperCase())));
+                valid = true;
+                System.out.println("Sangen '" + title + "' er blevet tilføjet.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Denne genre findes ikke, prøv igen");
+            }
         }
-
 
     }
 
