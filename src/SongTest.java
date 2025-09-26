@@ -73,8 +73,6 @@ public class SongTest {
                 System.out.println("Denne genre findes ikke, prøv igen");
             }
         }
-
-
     }
 
     private static void removeSong() {
@@ -105,7 +103,6 @@ public class SongTest {
             return;
         }
 
-
         System.out.println("Sangen '" + title + "' blev fundet.");
         System.out.println("Vil du ændre titlen eller genren?");
         String choice = scanner.nextLine();
@@ -133,6 +130,7 @@ public class SongTest {
     }
 
     private static void showAd() {
+        System.out.println();
         System.out.println("---- REKLAME ----");
         System.out.println("Opgrader til Premium for reklamefri musik og download!");
         System.out.println("-----------------");
