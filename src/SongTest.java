@@ -130,6 +130,7 @@ public class SongTest {
             }
         }
     }
+
     private static void showAd() {
         System.out.println("---- REKLAME ----");
         System.out.println("Opgrader til Premium for reklamefri musik og download!");
@@ -144,6 +145,7 @@ public class SongTest {
         }
         return null;
     }
+
     private static void showSongs() {
         if (songs.isEmpty()) {
             System.out.println("ingen sange i listen.");
