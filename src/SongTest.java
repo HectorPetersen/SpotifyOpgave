@@ -108,9 +108,18 @@ public class SongTest {
             String newTitle = scanner.nextLine();
             song.setTitle(newTitle);
         } else if (choice.trim().toLowerCase().startsWith("g")) {
-            System.out.println("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country)");
-            String newGenre = scanner.nextLine();
-            song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
+            boolean valid = false;
+            while(!valid) {
+                try {
+                    System.out.print("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country): ");
+                    String newGenre = scanner.nextLine();
+                    song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
+                    valid = true;
+                    System.out.println("Sangen '" + title + "' er blevet redigeret.");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Denne genre findes ikke, prøv igen");
+                }
+            }
         }
     }
 
