@@ -96,32 +96,33 @@ public class SongTest {
         System.out.println("Hvilken sang ønsker du at ændre? (Titel)");
         String title = scanner.nextLine();
         Song song = findByTitle(title);
-        boolean isValid = false;
+
         if (song == null) {
             System.out.println("Sangen '" + title + "' blev ikke fundet.");
-        } else {
-            System.out.println("Sangen '" + title + "' blev fundet.");
-            isValid = true;
+            return;
         }
-        if (isValid) {
-            System.out.println("Vil du ændre titlen eller genren?");
-            String choice = scanner.nextLine();
-            if (choice.trim().toLowerCase().startsWith("t")) {
-                System.out.println("Hvad vil du ændre titlen til?");
-                String newTitle = scanner.nextLine();
-                song.setTitle(newTitle);
-            } else if (choice.trim().toLowerCase().startsWith("g")) {
-                boolean valid = false;
-                while (!valid) {
-                    try {
-                        System.out.print("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country): ");
-                        String newGenre = scanner.nextLine();
-                        song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
-                        valid = true;
-                        System.out.println("Sangen '" + title + "' er blevet redigeret.");
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Denne genre findes ikke, prøv igen");
-                    }
+
+        System.out.println("Sangen '" + title + "' blev fundet.");
+        System.out.println("Vil du ændre titlen eller genren?");
+        String choice = scanner.nextLine();
+
+        if (choice.trim().toLowerCase().startsWith("t")) {
+            System.out.println("Hvad vil du ændre titlen til?");
+            String newTitle = scanner.nextLine();
+            song.setTitle(newTitle);
+            System.out.println("Titlen er blevet opdateret til" + " " + (newTitle));
+
+        } else if (choice.trim().toLowerCase().startsWith("g")) {
+            boolean valid = false;
+            while(!valid) {
+                try {
+                    System.out.print("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country): ");
+                    String newGenre = scanner.nextLine();
+                    song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
+                    valid = true;
+                    System.out.println("Sangen '" + title + "' er blevet redigeret.");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Denne genre findes ikke, prøv igen");
                 }
             }
         }
