@@ -7,6 +7,9 @@ public class SongTest {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        run();
+    }
+    private static void run(){
         System.out.println("Velkommen til det hjemmelavede Spotify!");
         User user = loginFlow();
 
