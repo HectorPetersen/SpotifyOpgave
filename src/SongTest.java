@@ -7,9 +7,6 @@ public class SongTest {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        run();
-    }
-    private static void run(){
         System.out.println("Velkommen til det hjemmelavede Spotify!");
         User user = loginFlow();
 
@@ -32,7 +29,6 @@ public class SongTest {
         }
         System.out.println("Farvel!");
     }
-
 
     private static User loginFlow() {
         System.out.print("Indtast brugernavn: ");
@@ -87,7 +83,6 @@ public class SongTest {
             System.out.println("Sangen '" + title + "' er blevet fjernet.");
         } else {
             System.out.println("Sangen '" + title + "' blev ikke fundet.");
-
         }
     }
 
@@ -108,15 +103,24 @@ public class SongTest {
         }
         System.out.println("Vil du ændre titlen eller genren?");
         String choice = scanner.nextLine();
-            if (choice.trim().toLowerCase().startsWith("t")) {
-                System.out.println("Hvad vil du ændre titlen til?");
-                String newTitle = scanner.nextLine();
-                song.setTitle(newTitle);
-            } else if (choice.trim().toLowerCase().startsWith("g")) {
-                System.out.println("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country)");
-                String newGenre = scanner.nextLine();
-                song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
+        if (choice.trim().toLowerCase().startsWith("t")) {
+            System.out.println("Hvad vil du ændre titlen til?");
+            String newTitle = scanner.nextLine();
+            song.setTitle(newTitle);
+        } else if (choice.trim().toLowerCase().startsWith("g")) {
+            boolean valid = false;
+            while(!valid) {
+                try {
+                    System.out.print("Hvad vil du ændre genren til? (Rock/Pop/Jazz/Country): ");
+                    String newGenre = scanner.nextLine();
+                    song.setGenre(Genre.valueOf(newGenre.toUpperCase()));
+                    valid = true;
+                    System.out.println("Sangen '" + title + "' er blevet redigeret.");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Denne genre findes ikke, prøv igen");
+                }
             }
+        }
     }
 
     private static void showAd() {
